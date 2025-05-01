@@ -6,25 +6,24 @@ var navLinks = document.querySelectorAll(".navbar-nav li a")
 // ^ App Variables
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions 
 async function getCurrentData(name){
-  var response = await fetch (`http://api.weatherapi.com/v1/current.json?key=afed901ad4034a80ac2124007253004&q=${name}`);
+  var response = await fetch (`https://api.weatherapi.com/v1/current.json?key=afed901ad4034a80ac2124007253004&q=${name}`);
   var data = await response.json();
   displayCurrentWeather(data)  
 }
 // **************************
 async function getOtherData(name){
-  var responseTwo = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=afed901ad4034a80ac2124007253004&q=${name}&days=3`);
+  var responseTwo = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=afed901ad4034a80ac2124007253004&q=${name}&days=3`);
   var otherData = await responseTwo.json();
   displayNextTwoDays(otherData) 
 }
 
-getCurrentData("liverpool")
-getOtherData("liverpool")
+getCurrentData("cairo")
+getOtherData("cairo")
 // ***************
 
 function displayCurrentWeather(data) {
   var date = new Date(data.location.localtime);
   var dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-
   currentContainer.innerHTML = `<div class="card col-lg-4 p-0">
     <div class="top d-flex justify-content-between align-items-center w-100" id="today">
       <div class="day">${dayName}</div>
