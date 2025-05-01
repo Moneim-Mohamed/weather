@@ -78,7 +78,7 @@ function displayNextTwoDays(data) {
 }
 // ******************* Events
 locationInput.addEventListener("input",async function searchData(){
-  var response = await fetch(`http://api.weatherapi.com/v1/search.json?key=afed901ad4034a80ac2124007253004&q=${locationInput.value}`);
+  var response = await fetch(`https://api.weatherapi.com/v1/search.json?key=afed901ad4034a80ac2124007253004&q=${locationInput.value}`);
   var searchData = await response.json();
   var name = locationInput.value.trim();
   getCurrentData(name);
